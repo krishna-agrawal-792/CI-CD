@@ -1,4 +1,4 @@
-name: Extended Fake CI/CD Pipeline
+name: CI/CD Pipeline
 
 on:
   push:
@@ -21,39 +21,39 @@ jobs:
         with:
           python-version: "3.8"
 
-      - name: Install dependencies (Fake Step)
+      - name: Install dependencies
         run: |
           echo "Installing dependencies..."
           echo "pip install -r requirements.txt"
 
-      - name: Run unit tests (Fake Step)
+      - name: Run unit tests
         run: |
           echo "Running unit tests..."
           echo "pytest tests/unit_tests/"
 
-      - name: Build the application (Fake Step)
+      - name: Build the application
         run: |
           echo "Building the application..."
           echo "npm run build"
           echo "mvn package"
 
-      - name: Lint the code (Fake Step)
+      - name: Lint the code
         run: |
           echo "Running code linting..."
           echo "eslint ."
           echo "flake8 ."
 
-      - name: Run integration tests (Fake Step)
+      - name: Run integration tests
         run: |
           echo "Running integration tests..."
           echo "pytest tests/integration_tests/"
 
-      - name: Create Docker image (Fake Step)
+      - name: Create Docker image
         run: |
           echo "Creating Docker image..."
           echo "docker build -t myapp:latest ."
 
-      - name: Push Docker image to registry (Fake Step)
+      - name: Push Docker image to registry
         run: |
           echo "Pushing Docker image to registry..."
           echo "docker push myapp:latest"
