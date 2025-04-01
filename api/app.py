@@ -15,7 +15,7 @@ def predict():
 
     prediction = model.predict(img_array)
     result = {'Normal': float(prediction[0][0]), 'Diabetic Retinopathy': float(prediction[0][1])}
-    return jsonify(result)
+    # return jsonify(result)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
