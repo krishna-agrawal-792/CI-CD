@@ -67,29 +67,29 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v2
 
-      - name: Deploy to staging environment (Fake Step)
+      - name: Deploy to staging environment
         run: |
           echo "Deploying to staging environment..."
           echo "ssh user@staging-server 'docker run -d myapp:latest'"
 
-      - name: Run smoke tests on staging (Fake Step)
+      - name: Run smoke tests on staging
         run: |
           echo "Running smoke tests on staging..."
           echo "curl http://staging-server/health"
           echo "curl http://staging-server/status"
 
-      - name: Deploy to production (Fake Step)
+      - name: Deploy to production
         run: |
           echo "Deploying to production..."
           echo "ssh user@production-server 'docker run -d myapp:latest'"
 
-      - name: Run smoke tests on production (Fake Step)
+      - name: Run smoke tests on production
         run: |
           echo "Running smoke tests on production..."
           echo "curl http://production-server/health"
           echo "curl http://production-server/status"
 
-      - name: Notify team (Fake Step)
+      - name: Notify team
         run: |
           echo "Notifying the team..."
           echo "Sending email to devteam@example.com"
