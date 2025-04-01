@@ -1,0 +1,96 @@
+name: Extended Fake CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.8"
+
+      - name: Install dependencies (Fake Step)
+        run: |
+          echo "Installing dependencies..."
+          echo "pip install -r requirements.txt"
+
+      - name: Run unit tests (Fake Step)
+        run: |
+          echo "Running unit tests..."
+          echo "pytest tests/unit_tests/"
+
+      - name: Build the application (Fake Step)
+        run: |
+          echo "Building the application..."
+          echo "npm run build"
+          echo "mvn package"
+
+      - name: Lint the code (Fake Step)
+        run: |
+          echo "Running code linting..."
+          echo "eslint ."
+          echo "flake8 ."
+
+      - name: Run integration tests (Fake Step)
+        run: |
+          echo "Running integration tests..."
+          echo "pytest tests/integration_tests/"
+
+      - name: Create Docker image (Fake Step)
+        run: |
+          echo "Creating Docker image..."
+          echo "docker build -t myapp:latest ."
+
+      - name: Push Docker image to registry (Fake Step)
+        run: |
+          echo "Pushing Docker image to registry..."
+          echo "docker push myapp:latest"
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    if: success()
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+
+      - name: Deploy to staging environment (Fake Step)
+        run: |
+          echo "Deploying to staging environment..."
+          echo "ssh user@staging-server 'docker run -d myapp:latest'"
+
+      - name: Run smoke tests on staging (Fake Step)
+        run: |
+          echo "Running smoke tests on staging..."
+          echo "curl http://staging-server/health"
+          echo "curl http://staging-server/status"
+
+      - name: Deploy to production (Fake Step)
+        run: |
+          echo "Deploying to production..."
+          echo "ssh user@production-server 'docker run -d myapp:latest'"
+
+      - name: Run smoke tests on production (Fake Step)
+        run: |
+          echo "Running smoke tests on production..."
+          echo "curl http://production-server/health"
+          echo "curl http://production-server/status"
+
+      - name: Notify team (Fake Step)
+        run: |
+          echo "Notifying the team..."
+          echo "Sending email to devteam@example.com"
+          echo "Sending Slack message to #dev-channel"
